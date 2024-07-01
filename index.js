@@ -16,7 +16,7 @@ eventapp.use(express.json());
 // Use routes- enable us make use of other routes defined in other files
 eventapp.use(eventRouter);
 
-// Listen for incoming requests, positioning to take hosting port number if needed
+// Listen for incoming requests
 const port = process.env.PORT || 8088;
 eventapp.listen(port, () => {
     console.log(`App listening on port ${port}`);
