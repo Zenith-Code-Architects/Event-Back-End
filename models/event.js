@@ -13,4 +13,4 @@ const eventSchema = new Schema({
 
 eventSchema.plugin(toJSON);
 
-export const eventModel = model('event', eventSchema);
+export const EventModel = model('event', eventSchema);
