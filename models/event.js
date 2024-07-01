@@ -12,5 +12,5 @@ const eventSchema = new Schema({
 });
 
 eventSchema.plugin(toJSON);
-
+//EXPORTING MODEL
 export const EventModel = model('event', eventSchema);
