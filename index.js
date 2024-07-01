@@ -17,7 +17,7 @@ eventapp.use(express.json());
 eventapp.use(eventRouter);
 
 // Listen for incoming requests
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8088;
 eventapp.listen(port, () => {
     console.log(`App listening on port ${port}`);
 });
