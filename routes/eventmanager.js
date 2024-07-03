@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { addEvents, deleteEvent, editEvent, getEvents } from "../controllers/eventmanager.js";
+import { addEvent, deleteEvent, editEvent, getEvents } from "../controllers/eventmanager.js";
+import { remoteUpload } from "../middleware/flier-uploads.js";
 
 //ROUTER CREATIONS
 const eventRouter = Router();
@@ -7,7 +8,7 @@ const eventRouter = Router();
 //DEFINING ROUTES
 eventRouter.get('/events', getEvents);
 
-eventRouter.post('/events', addEvents);
+eventRouter.post('/events', remoteUpload.single('flierUrl'), addEvent);
 
 eventRouter.patch('/events/:id', editEvent);
 
