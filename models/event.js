@@ -6,11 +6,11 @@ const eventSchema = new Schema({
     "date": {type: Date, required: true},
     "price": {type: String},
     "location": {type: String},
-    "flierURL": {type: String}
+    "flierUrl": {type: String}
 }, {
     timestamps: true
 });
 
 eventSchema.plugin(toJSON);
-
+//EXPORTING MODEL
 export const EventModel = model('event', eventSchema);
