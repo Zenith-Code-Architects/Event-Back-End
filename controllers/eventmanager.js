@@ -1,31 +1,44 @@
 import { EventModel } from "../models/event.js";
 
-//VIEWING ALL EVENTS
+//  Fetch from database with and without conditions and with pagination
 export const getEvents = async (req, res, next) => {
     try {
-        //Get all events from database
-        const allEvents = await EventModel.find()
-        //Return all events to homepage
-        res.status(200).json(allEvents)
+        // Get query params- the structuring
+        const {  
+            filter = "{}", 
+            sort = "{}",
+            fields = "{}", 
+            limit = 10, 
+            skip = 0
+        } = req.query;
+        // Get all events from database
+        const allEvents = await EventModel
+            .find(JSON.parse(filter))
+            .sort(JSON.parse(sort))
+            .select(JSON.parse(fields))
+            .limit(limit)
+            .skip(skip);
+        // Return response
+        res.status(200).json(allEvents);
     } catch (error) {
         next(error);
     }
 }
 
-
-
 //POSTING NEW EVENT
-export const addEvents = async (req, res, next) => {
+export const addEvent = async (req, res, next) => {
     try {
-        //Add a new events to database
-       const postEvent = await EventModel.create(req.body);
+        //Add a new event to database
+       const postEvent = await EventModel.create({
+        ...req.body,
+        flierUrl: req.file.filename
+       });
         //Return added event to homepage
         res.status(201).json(postEvent);
     } catch (error) {
         next(error);
     }
 }
-
 
 //UPDATING EVENT DETAILS
 export const editEvent =  async (req, res, next) => {
@@ -39,7 +52,7 @@ export const editEvent =  async (req, res, next) => {
     }
 }
 
-//DELETING A SINGLE EVENT
+//DELETING AN EVENT
 export const deleteEvent = async (req, res, next) => {
     try {
      //Delete event by ID
