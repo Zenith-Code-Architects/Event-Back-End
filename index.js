@@ -7,7 +7,7 @@ import eventRouter from "./routes/eventmanager.js";
 
 // Connect to database
 await mongoose.connect(process.env.Mongo_Url);
-console.log ("Connected to Event Management Database");
+console.log("Connected to Event Management Database");
 
 // Create Express App
 const eventapp = express();
