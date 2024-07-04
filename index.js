@@ -22,7 +22,7 @@ expressOasGenerator.handleResponses(eventapp, {
 eventapp.use(cors());
 eventapp.use(express.json());
 
-// Use routes- enable us make use of other routes defined in other files
+// Use routes- allow us make use of other routes defined in other files
 eventapp.use(eventRouter);
 expressOasGenerator.handleRequests();
 eventapp.use((req, res) => res.redirect('/api-docs'));
