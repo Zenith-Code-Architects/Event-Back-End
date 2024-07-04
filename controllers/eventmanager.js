@@ -40,9 +40,10 @@ export const getEvent = async (req, res, next) => {
 export const addEvent = async (req, res, next) => {
     try {
         //Add a new event to database
-        const postEvent = await EventModel.create({
+        const postEvent = await EventModel.create(req.params.id,{
             ...req.body,
-            eventFlier: req.file.filename
+            eventFlier: req.file.filename, 
+            new: true
         });
         //Return added event to homepage
         res.status(201).json(postEvent);
