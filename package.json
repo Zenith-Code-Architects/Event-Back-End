@@ -1,5 +1,5 @@
 {
-  "name": "event-backend",
+  "name": "zenith-code-architects-event-api",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
