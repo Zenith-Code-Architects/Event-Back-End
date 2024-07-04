@@ -1,4 +1,4 @@
-import { EventModel } from "../models/event.js";
+import { EventModel } from "../models/eventmanager.js";
 
 //  Fetch from database with and without conditions and with pagination
 export const getEvents = async (req, res, next) => {
@@ -48,6 +48,9 @@ export const addEvent = async (req, res, next) => {
         res.status(201).json(postEvent);
     } catch (error) {
         next(error);
+        if(error.errorResponse.code === 11000){
+            return res.status(409).send("This event already exist, enter unique event name")
+        }
     }
 }
 
@@ -63,7 +66,10 @@ export const editEvent = async (req, res, next) => {
         );
         res.status(200).json(updatedEvent)
     } catch (error) {
-        next(error)
+        next(error);
+        if(error.errorResponse.code === 11000){
+            return res.status(409).send("This event already exist, enter unique event name")
+        }
     }
 }
 
