@@ -56,7 +56,11 @@ export const editEvent = async (req, res, next) => {
 
     try {
         const update = req.body
-        const updatedEvent = await EventModel.findByIdAndUpdate(req.params.id, update, { new: true })
+        const updatedEvent = await EventModel.findByIdAndUpdate(
+            req.params.id,
+            {...update, eventFlier: req.file.filename},
+            { new: true }
+        );
         res.status(200).json(updatedEvent)
     } catch (error) {
         next(error)

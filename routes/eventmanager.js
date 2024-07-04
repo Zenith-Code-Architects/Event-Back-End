@@ -12,7 +12,7 @@ eventRouter.get('/events/:id', getEvent);
 
 eventRouter.post('/events', remoteUpload.single('eventFlier'), addEvent);
 
-eventRouter.patch('/events/:id', editEvent);
+eventRouter.patch('/events/:id', remoteUpload.single('eventFlier'), editEvent);
 
 eventRouter.delete('/events/:id', deleteEvent);
 
