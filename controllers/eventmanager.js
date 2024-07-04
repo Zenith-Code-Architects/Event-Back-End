@@ -58,7 +58,7 @@ export const editEvent = async (req, res, next) => {
         const update = req.body
         const updatedEvent = await EventModel.findByIdAndUpdate(
             req.params.id,
-            {...update, eventFlier: req.file.filename},
+            {...update, eventFlier: req?.file?.filename},
             { new: true }
         );
         res.status(200).json(updatedEvent)
