@@ -10,7 +10,7 @@ eventRouter.get('/events', getEvents);
 
 eventRouter.get('/events/:id', getEvent);
 
-eventRouter.post('/events', remoteUpload.single('flierUrl'), addEvent);
+eventRouter.post('/events', remoteUpload.single('eventFlier'), addEvent);
 
 eventRouter.patch('/events/:id', editEvent);
 

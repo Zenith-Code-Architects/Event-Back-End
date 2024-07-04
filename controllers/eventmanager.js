@@ -42,7 +42,7 @@ export const addEvent = async (req, res, next) => {
         //Add a new event to database
         const postEvent = await EventModel.create({
             ...req.body,
-            flierUrl: req.file.filename
+            eventFlier: req.file.filename
         });
         //Return added event to homepage
         res.status(201).json(postEvent);
