@@ -8,7 +8,7 @@ export const getEvents = async (req, res, next) => {
             filter = "{}",
             sort = "{}",
             fields = "{}",
-            limit = 10,
+            limit = 0,
             skip = 0
         } = req.query;
         // Get all events from database
